@@ -31,6 +31,7 @@ export class ArticleComponent implements OnInit {
   // .........
   /// hadi hia hia hia
   //dgfdgfdgfdg
+  //ghghghghg
   createArticle(): void {
     this.articleService.createArticle(this.newArticle).subscribe(res => {
       this.loadArticles();
