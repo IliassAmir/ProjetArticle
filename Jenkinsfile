@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     tools {
-        // Assure-toi d'avoir Maven installé sur Jenkins
         maven 'Maven 3.9.0'
         jdk 'Java 17'
     }
@@ -10,22 +9,21 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Récupère le code depuis GitHub
                 git branch: 'main', url: 'https://github.com/IliassAmir/ProjetJava.git'
             }
         }
 
         stage('Build') {
             steps {
-                // Compile le projet avec Maven
-                sh 'mvn clean install -DskipTests'
+                // Compile le projet avec Maven sur Windows
+                bat 'mvn clean install -DskipTests'
             }
         }
 
         stage('Unit Tests') {
             steps {
-                // Lancer les tests unitaires (Mockito inclus)
-                sh 'mvn test'
+                // Lancer les tests unitaires
+                bat 'mvn test'
             }
             post {
                 always {
